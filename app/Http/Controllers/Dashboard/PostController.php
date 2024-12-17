@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //En el modelo (Post.php) se deifinen los campos a utilizar en el Insert
+        //En el modelo (Post.php) se deifinen los campos a utilizar en el Insert -- Se CREA mediante el modelo
         /*$post = Post::create(
             [
                 'title' => 'test title',
@@ -27,25 +27,36 @@ class PostController extends Controller
             ]
         );*/
 
+
+
+
+
         // Post es el objeto - El Modelo (la tabla)
-        //find traduce la consulta sql para ejecutar y lo traduce a un objeto
-        $post = Post::find(1);
+        //find traduce la consulta sql para ejecutar y lo traduce a un objeto -- Se ACTUALIZA mediante el MODELO
+        //$post = Post::find(1);
 
         //dd($post);
 
-        $post->update(
-            [
-                'title' => 'test title new',
-                'slug' => 'test slug new',
-                'content' => 'test content new',
-                'description' => 'test description new',
-                'image' => 'test image'
-            ]
-            );
+        // $post->update(
+        //     [
+        //         'title' => 'test title new',
+        //         'slug' => 'test slug new',
+        //         'content' => 'test content new',
+        //         'description' => 'test description new',
+        //         'image' => 'test image'
+        //     ]
+        // );
 
 
         //dd($post);
         //dd($post->title);
+
+        
+
+        //Se ELIMINARA mediante el objeto 
+        $post  = Post::find(5);
+        $post->delete();
+
         
         return 'Index';
     }
