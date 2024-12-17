@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
@@ -14,18 +15,24 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        // return response()->json([
+        //     'name' => 'Abigail',
+        //     'state' => 'CA'
+        // ]);
+
         //En el modelo (Post.php) se deifinen los campos a utilizar en el Insert -- Se CREA mediante el modelo
-        /*$post = Post::create(
-            [
-                'title' => 'test title',
-                'slug' => 'test slug',
-                'content' => 'test content',
-                'category_id' => 1,
-                'description' => 'test description',
-                'posted' => 'not',
-                'image' => 'test image'
-            ]
-        );*/
+        // $post = Post::create(
+        //     [
+        //         'title' => 'test title',
+        //         'slug' => 'test slug',
+        //         'content' => 'test content',
+        //         'category_id' => 1,
+        //         'description' => 'test description',
+        //         'posted' => 'not',
+        //         'image' => 'test image'
+        //     ]
+        // );
 
 
 
@@ -35,9 +42,10 @@ class PostController extends Controller
         //find traduce la consulta sql para ejecutar y lo traduce a un objeto -- Se ACTUALIZA mediante el MODELO
         //$post = Post::find(1);
 
-        //dd($post);
+        //dd($post); 
+        //Asi con dd puede retornar el objeto comleto, agregando la varaible $post como en el UPDATE
 
-        // $post->update(
+        // $post = $post->update(
         //     [
         //         'title' => 'test title new',
         //         'slug' => 'test slug new',
@@ -54,8 +62,15 @@ class PostController extends Controller
         
 
         //Se ELIMINARA mediante el objeto 
-        $post  = Post::find(5);
-        $post->delete();
+        // $post  = Post::find(5);
+        // $post->delete();
+
+        //dd($post);
+
+        $post = Post::find(1);
+        $category = Category::find(1);
+        dd($category->posts[1]->title);
+        //dd($post->category);
 
         
         return 'Index';
