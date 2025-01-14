@@ -81,7 +81,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        //Pasar categorias de la Base de Datos
+        $categories = Category::get();
+        dd($categories);
+
+
+        return view('dashboard.post.create');
     }
 
     /**
