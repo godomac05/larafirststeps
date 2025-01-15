@@ -1,7 +1,9 @@
 @extends('dashboard.master')
 
 @section('contect')
-    <form action="" method="post">
+    <form action="{{ route('post.store') }}" method="post">
+
+        @csrf
 
         <label for="">Title</label>
         <input type="text" name="title">
@@ -14,7 +16,9 @@
 
         <label for="">Category</label>
         <select name="category_id">
-
+            @foreach ($categories as $title => $id)
+                <option value="{{ $id }}">{{ $title }}</option>
+            @endforeach
         </select>
 
         <label for="">Description</label>

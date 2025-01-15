@@ -61,7 +61,7 @@ Route::get('otro/{post?}/{post2?}',[PrimerControlador::class,'otro']); //http://
 Route::get('test2',[SegundoControlador::class,'index']);
 
 //Agrupa todos los tipo clase
-Route::resource('post', PrimerControlador::class);
+//Route::resource('post', PrimerControlador::class);
 
 //Se crea la Ruta para el MVC Post.php
 Route::resource('post', PostController::class);

@@ -69,11 +69,11 @@ class PostController extends Controller
 
         $post = Post::find(1);
         $category = Category::find(1);
-        dd($category->posts[1]->title);
+        //dd($category->posts[1]->title);
         //dd($post->category);
 
         
-        return 'Index';
+        return 'Index PostController';
     }
 
     /**
@@ -82,11 +82,13 @@ class PostController extends Controller
     public function create()
     {
         //Pasar categorias de la Base de Datos
-        $categories = Category::get();
-        dd($categories);
+        //Get Obtiene todo
+        //$categories = Category::get(); 
+        //Pluck Obtiene solo los campos indicados
+        $categories = Category::pluck('id','title');
+        //dd($categories);
 
-
-        return view('dashboard.post.create');
+        return view('dashboard.post.create', compact('categories'));
     }
 
     /**
@@ -94,7 +96,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Emplea funcion de ayuda del Framework
+        //dd(request()->get('title'));
+        //Corresponde a la varaible de la funcion
+        //dd($request->all()['title']);
+        //dd($request->all());
+
+        // Post::create(
+        //          [
+        //             'title' => $request->all()['title'],
+        //             'slug' => $request->all()['slug'],
+        //             'content' => $request->all()['content'],
+        //             'category_id' => $request->all()['category_id'],
+        //             'description' => $request->all()['description'],
+        //             'posted' => $request->all()['posted']
+        //             //'image' => $request->all()['image']
+        //          ]
+        //      );
+
+
+        Post::create($request->all());
+
+        return to_route('post.index');
+
+
     }
 
     /**
